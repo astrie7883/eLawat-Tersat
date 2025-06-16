@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem e-Lawat FELDA Tersat</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f2f6f9; padding: 20px; }
+    .header { background: #1e3a8a; color: white; padding: 20px; border-radius: 10px; }
+    .section { background: white; padding: 20px; margin-top: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    h2 { color: #1e3a8a; }
+    .btn { padding: 10px 20px; background: #2563eb; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .input { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc; }
+    .status { padding: 5px 10px; border-radius: 5px; color: white; font-weight: bold; }
+    .status.hijau { background: #10b981; }
+    .status.kuning { background: #facc15; color: black; }
+    .status.merah { background: #ef4444; }
+    .preview-img { max-width: 100%; margin-top: 10px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Sistem e-Lawat FELDA Tersat</h1>
+    <p>Platform kemaskini maklumat peneroka secara atas talian</p>
+  </div>
+
+  <div class="section">
+    <h2>Carian Peneroka</h2>
+    <input type="text" class="input" placeholder="Nama atau No. Rumah">
+    <button class="btn">Cari</button>
+  </div>
+
+  <div class="section">
+    <h2>Maklumat Peneroka</h2>
+    <p><strong>Nama:</strong> Pak Salleh bin Daud</p>
+    <p><strong>No. Rumah:</strong> RKT 117</p>
+    <p><strong>Status Lawatan:</strong> <span class="status hijau">Stabil</span></p>
+    <p><strong>No. Telefon:</strong> 013-xxxxxxx</p>
+    <p><strong>Status Kesihatan:</strong> Sihat</p>
+  </div>
+
+  <div class="section">
+    <h2>Borang Lawatan (Ringkasan)</h2>
+    <input type="date" class="input">
+    <textarea class="input" rows="4" placeholder="Catatan lawatan, dapatan, tindakan susulan..."></textarea>
+    
+    <h3>Muat Naik Gambar Lawatan</h3>
+    <input type="file" class="input" accept="image/*" onchange="previewImage(event)">
+    <img id="preview" class="preview-img" src="#" alt="Preview Gambar">
+    
+    <button class="btn">Hantar</button>
+  </div>
+
+  <script>
+    function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function(){
+        var output = document.getElementById('preview');
+        output.src = reader.result;
+        output.style.display = 'block';
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+</body>
+</html>
